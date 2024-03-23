@@ -11,6 +11,11 @@ import {SloganService} from '../service/slogan.service'
 })
 export class SloganComponent {
   @Input() slogan?:ISlogan;
-  constructor(public sloganService: SloganService,) {
+  constructor(
+    private sloganService: SloganService
+  ) {}
+
+  delete(slogan:ISlogan) {
+    this.sloganService.deleteSlogan(slogan)
   }
 }

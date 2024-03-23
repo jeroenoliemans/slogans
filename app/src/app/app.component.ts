@@ -1,6 +1,6 @@
 import {Component, Signal, signal} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, RouterLink } from '@angular/router';
 import { SloganService } from './service/slogan.service'
 import {FormsModule, FormBuilder} from "@angular/forms";
 import { ReactiveFormsModule } from '@angular/forms';
@@ -10,7 +10,7 @@ import {SloganComponent} from './slogan/slogan.component'
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, FormsModule, ReactiveFormsModule, SloganComponent],
+  imports: [CommonModule, RouterOutlet, FormsModule, ReactiveFormsModule, SloganComponent, RouterLink],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -29,7 +29,7 @@ export class AppComponent {
 
 
   onSubmit() {
-    this.sloganService.addSlogan({id: null, slogan: this.sloganForm.value.slogan as string})
+    this.sloganService.addSlogan({id: null, slogan: this.sloganForm.value.slogan as string, themeId: 1})
     this.sloganForm.reset();
     this.sloganService.fetchSlogans()
   }
