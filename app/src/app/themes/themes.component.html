@@ -2,6 +2,22 @@
   <div class="content">
     <h1>{{store.Themes().length}} themes available</h1>
     <h3>Add your custom theme</h3>
+    <h3>Add your slogan</h3>
+    <form [formGroup]="themeForm" (ngSubmit)="onSubmit()">
+      <p>
+        <label for="label">
+          Theme label
+          <input type="text" name="label" formControlName="label" placeholder="Add a label for the theme" id="label">
+        </label>
+      </p>
+      <p>
+        <label for="label">
+          Theme first background color
+      <input type="color" name="backgroundColor" formControlName="backgroundColor" placeholder="Add a label for the theme" id="backgroundColor">
+        </label>
+      </p>
+      <button type="submit">Add theme</button>
+    </form>
     <section class="themes">
       <div class="theme" *ngFor="let theme of store.Themes()">
         <h3>{{theme?.label}}</h3>
