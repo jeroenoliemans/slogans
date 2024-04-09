@@ -6,10 +6,8 @@
       <input type="text" name="slogan" formControlName="slogan" placeholder="Add a new slogan" id="slogan">
       <button type="submit">Add slogan</button>
     </form>
-    <section class="slogans">
-      <div class="slogan" *ngFor="let slogan of store.Slogans()">
+    <section class="slogans" *ngFor="let slogan of store.Slogans()">
         <app-slogan [slogan]="slogan"></app-slogan>
-      </div>
     </section>
   </div>
 </main>

@@ -1,6 +1,7 @@
 package com.slogans.controller;
 
 import com.slogans.domain.Slogan;
+import com.slogans.dto.SloganDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -25,12 +26,12 @@ public class SloganController {
     private final SloganService sloganService;
 
     @GetMapping(value = PATH_SLOGANS)
-    List<Slogan> getAll() {
+    List<SloganDTO> getAll() {
         return sloganService.getSlogans();
     }
 
     @GetMapping(value = PATH_SLOGAN)
-    Optional<Slogan> getSlogan(@PathVariable Long id) {
+    Optional<SloganDTO> getSlogan(@PathVariable Long id) {
         return sloganService.getSlogan(id);
     }
 

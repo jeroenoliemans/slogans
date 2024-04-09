@@ -1,10 +1,13 @@
 package com.slogans.service;
 
 import com.slogans.domain.Slogan;
+import com.slogans.dto.SloganDTO;
+import com.slogans.mapper.SloganMapper;
 import com.slogans.repository.SloganRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -14,12 +17,20 @@ import java.util.Optional;
 public class SloganService {
     @Autowired
     private final SloganRepository sloganRepository;
-    public List<Slogan> getSlogans() {
-        return sloganRepository.findAll().stream().toList();
+
+    @Autowired
+    private final SloganMapper sloganMapper;
+
+    public List<SloganDTO> getSlogans() {
+
+        return sloganRepository.findAll()
+                .stream()
+                .map(sloganMapper::toDto)
+                .toList();
     }
 
-    public Optional<Slogan> getSlogan(Long id) {
-        return sloganRepository.findById(id);
+    public Optional<SloganDTO> getSlogan(Long id) {
+        return sloganRepository.findById(id).map(sloganMapper::toDto);
     }
 
     public Slogan save(Slogan slogan) {

@@ -34,10 +34,10 @@ export class ThemesComponent {
       id: null,
       label: this.themeForm.value.label as string,
       backgroundColor: this.themeForm.value.backgroundColor as string,
-      backgroundColorLeft: '',
-      backgroundColorRight: '',
-      borderColor: '',
-      fontColor: ''
+      backgroundColorLeft: this.themeForm.value.backgroundColorLeft as string,
+      backgroundColorRight: this.themeForm.value.backgroundColorRight as string,
+      borderColor: this.themeForm.value.borderColor as string,
+      fontColor: this.themeForm.value.fontColor as string
     })
     this.themeForm.reset();
     this.themeService.fetchThemes()

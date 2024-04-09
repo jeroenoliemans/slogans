@@ -3,17 +3,41 @@
     <h1>{{store.Themes().length}} themes available</h1>
     <h3>Add your custom theme</h3>
     <h3>Add your slogan</h3>
-    <form [formGroup]="themeForm" (ngSubmit)="onSubmit()">
-      <p>
+    <form class="addThemeForm" [formGroup]="themeForm" (ngSubmit)="onSubmit()">
+      <p class="addThemeFormInputContainer">
         <label for="label">
           Theme label
           <input type="text" name="label" formControlName="label" placeholder="Add a label for the theme" id="label">
         </label>
       </p>
-      <p>
+      <p class="addThemeFormInputContainer">
         <label for="label">
-          Theme first background color
-      <input type="color" name="backgroundColor" formControlName="backgroundColor" placeholder="Add a label for the theme" id="backgroundColor">
+          First gradient background color
+          <input type="color" name="backgroundColor" formControlName="backgroundColor" id="backgroundColor">
+        </label>
+      </p>
+      <p class="addThemeFormInputContainer">
+        <label for="label">
+          Second gradient background color
+          <input type="color" name="backgroundColorLeft" formControlName="backgroundColorLeft" id="backgroundColorLeft">
+        </label>
+      </p>
+      <p class="addThemeFormInputContainer">
+        <label for="label">
+          Third gradient background color
+          <input type="color" name="backgroundColorRight" formControlName="backgroundColorRight" id="backgroundColorRight">
+        </label>
+      </p>
+      <p class="addThemeFormInputContainer">
+        <label for="label">
+          Border color
+          <input type="color" name="borderColor" formControlName="borderColor" id="borderColor">
+        </label>
+      </p>
+      <p class="addThemeFormInputContainer">
+        <label for="label">
+          Slogan color
+          <input type="color" name="fontColor" formControlName="fontColor" id="fontColor">
         </label>
       </p>
       <button type="submit">Add theme</button>

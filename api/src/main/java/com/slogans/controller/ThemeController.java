@@ -1,11 +1,17 @@
 package com.slogans.controller;
 
+import com.slogans.domain.Slogan;
 import com.slogans.domain.Theme;
+import com.slogans.dto.ThemeDTO;
 import com.slogans.service.ThemeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -21,12 +27,27 @@ public class ThemeController {
     private final ThemeService themeService;
 
     @GetMapping(value = PATH_THEMES)
-    List<Theme> getAll() {
+    List<ThemeDTO> getAll() {
         return themeService.getThemes();
     }
 
     @GetMapping(value = PATH_THEME)
-    Optional<Theme> getTheme(@PathVariable Long id) {
+    Optional<ThemeDTO> getTheme(@PathVariable Long id) {
         return themeService.getTheme(id);
+    }
+
+    @PostMapping(value = PATH_THEMES)
+    Theme saveSlogan(@RequestBody Theme theme) {
+        return themeService.save(theme);
+    }
+
+    @PutMapping(value = PATH_THEME)
+    void updateSlogan(@RequestBody Theme theme) {
+        themeService.updateTheme(theme);
+    }
+
+    @DeleteMapping(value = PATH_THEME)
+    void deleteSlogan(@PathVariable Long id) {
+        themeService.deleteTheme(id);
     }
 }

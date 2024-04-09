@@ -127,7 +127,6 @@ public class SloganControllerIntegrationTest {
             @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = "insert_slogans.sql"),
             @Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD, scripts = "clear_slogans.sql")
     })
-    @Sql("insert_slogans.sql")
     void testDeleteSloganController() {
         mvc.perform(
                         delete("/api/slogan/1")

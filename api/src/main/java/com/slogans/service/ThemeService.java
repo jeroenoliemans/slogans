@@ -1,6 +1,8 @@
 package com.slogans.service;
 
 import com.slogans.domain.Theme;
+import com.slogans.dto.ThemeDTO;
+import com.slogans.mapper.ThemeMapper;
 import com.slogans.repository.ThemeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +17,24 @@ import java.util.Optional;
 public class ThemeService {
     @Autowired
     private final ThemeRepository themeRepository;
-    public List<Theme> getThemes() {
-        return themeRepository.findAll().stream().toList();
+
+    @Autowired
+    private final ThemeMapper themeMapper;
+
+    public List<ThemeDTO> getThemes() {
+        return themeRepository.findAll()
+                .stream()
+                .map(themeMapper::toDto)
+                .toList();
     }
 
-    public Optional<Theme> getTheme(Long id) {
-        return themeRepository.findById(id);
+    public Optional<ThemeDTO> getTheme(Long id) {
+        return themeRepository.findById(id).map(themeMapper::toDto);
     }
+
+    public Theme save(Theme theme) { return themeRepository.save(theme);}
+
+    public Theme updateTheme(Theme theme) {return themeRepository.save(theme);}
+
+    public void deleteTheme(Long id) {themeRepository.deleteById(id);}
 }
