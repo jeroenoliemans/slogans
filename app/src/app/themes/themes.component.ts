@@ -3,12 +3,12 @@ import {Store}  from '../store/Store'
 import {ThemeService} from '../service/themes.service'
 import {NgForOf} from "@angular/common";
 import {FormsModule, FormBuilder, ReactiveFormsModule} from "@angular/forms";
-import {SloganComponent} from "../slogan/slogan.component";
+import {ThemeComponent} from "../theme/theme.component";
 
 @Component({
   selector: 'app-themes',
   standalone: true,
-  imports: [FormsModule, NgForOf, ReactiveFormsModule, SloganComponent],
+  imports: [FormsModule, NgForOf, ReactiveFormsModule, ThemeComponent],
   templateUrl: './themes.component.html',
   styleUrl: './themes.component.css'
 })

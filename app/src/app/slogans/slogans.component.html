@@ -7,7 +7,7 @@
       <button type="submit">Add slogan</button>
     </form>
     <section class="slogans" *ngFor="let slogan of store.Slogans()">
-        <app-slogan [slogan]="slogan"></app-slogan>
+        <slogan [slogan]="slogan"></slogan>
     </section>
   </div>
 </main>

@@ -1,0 +1,11 @@
+<div
+  class="slogan"
+  [ngStyle]="{
+  'color': theme?.fontColor,
+  'border': '0.3rem solid',
+  'border-color':  theme?.borderColor,
+  'background': theme && this.getGradientBackground(theme)
+  }"
+>
+  <h3>{{theme?.label}}</h3>
+</div>

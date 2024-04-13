@@ -42,9 +42,10 @@
       </p>
       <button type="submit">Add theme</button>
     </form>
+    <h2>Available themes</h2>
     <section class="themes">
-      <div class="theme" *ngFor="let theme of store.Themes()">
-        <h3>{{theme?.label}}</h3>
+      <div class="themes" *ngFor="let theme of store.Themes()">
+        <theme [theme]="theme"></theme>
       </div>
     </section>
   </div>

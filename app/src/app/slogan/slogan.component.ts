@@ -3,7 +3,7 @@ import {ISlogan} from '../types/types'
 import {SloganService} from '../service/slogan.service'
 
 @Component({
-  selector: 'app-slogan',
+  selector: 'slogan',
   standalone: true,
   imports: [],
   templateUrl: './slogan.component.html',

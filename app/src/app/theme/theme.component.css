@@ -1,0 +1,18 @@
+.slogan {
+  font-family: "Stardos Stencil", system-ui;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  height: fit-content;
+  width: fit-content;
+  padding: 1.5rem 2rem;
+  background:
+    repeating-conic-gradient(at 100%,#0000 0.000045%, #000d 0.0005%), /* your noise */
+    linear-gradient(lightgrey, transparent),
+    linear-gradient(to top left, darkgrey, transparent),
+    linear-gradient(to top right, white, transparent);
+  background-blend-mode: overlay, screen, screen;
+  border: 0.3rem solid darkgray;
+}
