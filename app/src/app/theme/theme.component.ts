@@ -13,9 +13,9 @@ export class ThemeComponent {
   @Input() theme?:ITheme;
 
   public getGradientBackground(theme: ITheme) {
-    return `repeating-conic-gradient(at 100%,#0000 0.000045%, #000d 0.0005%), /* your noise */
+    return `repeating-conic-gradient(at 100%,#0000 0.000045%, #000d 0.0005%),
     linear-gradient(${theme?.backgroundColor}, transparent),
     linear-gradient(to top left, ${theme?.backgroundColorLeft}, transparent),
-    linear-gradient(to top right, ${theme?.backgroundColorRight}, transparent);`
+    linear-gradient(to top right, ${theme?.backgroundColorRight}, transparent)`
   }
 }

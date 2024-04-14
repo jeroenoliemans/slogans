@@ -19,6 +19,7 @@ import java.util.Optional;
 
 import static com.slogans.controller.EndPoints.PATH_THEME;
 import static com.slogans.controller.EndPoints.PATH_THEMES;
+import static com.slogans.controller.EndPoints.PATH_THEME_OPTIONS;
 
 @RestController
 @RequiredArgsConstructor

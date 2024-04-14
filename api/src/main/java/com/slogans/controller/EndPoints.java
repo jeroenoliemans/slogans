@@ -6,4 +6,6 @@ public interface EndPoints {
 
     String PATH_THEMES = "/api/theme";
     String PATH_THEME = "/api/theme/{id}";
+
+    String PATH_THEME_OPTIONS = "/api/theme/options";
 }
