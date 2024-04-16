@@ -3,6 +3,7 @@ package com.slogans.controller;
 import com.slogans.domain.Slogan;
 import com.slogans.domain.Theme;
 import com.slogans.dto.ThemeDTO;
+import com.slogans.dto.ThemeOptionsDTO;
 import com.slogans.service.ThemeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -31,6 +32,9 @@ public class ThemeController {
     List<ThemeDTO> getAll() {
         return themeService.getThemes();
     }
+
+    @GetMapping(value = PATH_THEME_OPTIONS)
+    List<ThemeOptionsDTO> getOptions() {return themeService.getThemeOptions();}
 
     @GetMapping(value = PATH_THEME)
     Optional<ThemeDTO> getTheme(@PathVariable Long id) {

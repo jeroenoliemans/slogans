@@ -3,6 +3,7 @@
     <h1>{{store.Themes().length}} themes available</h1>
     <h3>Add your custom theme</h3>
     <h3>Add your slogan</h3>
+
     <form class="addThemeForm" [formGroup]="themeForm" (ngSubmit)="onSubmit()">
       <p class="addThemeFormInputContainer">
         <label for="label">
@@ -42,11 +43,8 @@
       </p>
       <button type="submit">Add theme</button>
     </form>
-    <h2>Available themes</h2>
     <section class="themes">
-      <div class="themes" *ngFor="let theme of store.Themes()">
-        <theme [theme]="theme"></theme>
-      </div>
+        <theme [theme]="theme" *ngFor="let theme of store.Themes()"></theme>
     </section>
   </div>
 </main>

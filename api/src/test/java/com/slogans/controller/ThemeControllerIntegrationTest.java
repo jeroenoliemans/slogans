@@ -12,9 +12,8 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlGroup;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static com.slogans.controller.EndPoints.PATH_SLOGAN;
-import static com.slogans.controller.EndPoints.PATH_THEME;
 import static com.slogans.controller.EndPoints.PATH_THEMES;
+import static com.slogans.controller.EndPoints.PATH_THEME_OPTIONS;
 import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -44,7 +43,27 @@ public class ThemeControllerIntegrationTest {
                 .andExpectAll(status().isOk(),
                         jsonPath("$", hasSize(2)),
                         jsonPath("$[1].label").value("Pinky"),
+                        jsonPath("$[1].backgroundColor").value("pink"),
                         jsonPath("$[1].id").value(2L)
+                );
+    }
+
+    @Test
+    @SneakyThrows
+    @SqlGroup({
+            @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = "insert_themes.sql"),
+            @Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD, scripts = "clear_themes.sql")
+    })
+    void testGetThemeOptionsController() {
+        mvc.perform(
+                        get(PATH_THEME_OPTIONS)
+                                .contentType(MediaType.APPLICATION_JSON)
+                )
+                .andExpectAll(status().isOk(),
+                        jsonPath("$", hasSize(2)),
+                        jsonPath("$[1].label").value("Pinky"),
+                        jsonPath("$[1].id").value(2L),
+                        jsonPath("$[1].backgroundColor").doesNotExist()
                 );
     }
 

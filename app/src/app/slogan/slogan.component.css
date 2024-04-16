@@ -9,6 +9,7 @@
   height: fit-content;
   width: fit-content;
   padding: 1.5rem 2rem;
+  margin: 1rem;
   background:
     repeating-conic-gradient(at 100%,#0000 0.000045%, #000d 0.0005%), /* your noise */
     linear-gradient(lightgrey, transparent),

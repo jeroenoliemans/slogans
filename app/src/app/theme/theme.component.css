@@ -7,6 +7,7 @@
   text-transform: uppercase;
   height: fit-content;
   width: fit-content;
+  margin: 1rem;
   padding: 1.5rem 2rem;
   /*background:*/
   /*  repeating-conic-gradient(at 100%,#0000 0.000045%, #000d 0.0005%), !* your noise *!*/

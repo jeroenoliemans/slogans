@@ -7,13 +7,3 @@
   box-sizing: inherit;
   position: relative;
 }
-
-h1 {
-  text-align: center;
-}
-
-.themes {
-  width: 90vw;
-  display: flex;
-  justify-content: center;
-}
