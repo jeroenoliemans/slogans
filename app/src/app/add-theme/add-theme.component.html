@@ -1,1 +1,47 @@
-<p>add-theme works!</p>
+<main class="main">
+  <div class="content">
+    <h1>Add your Theme</h1>
+    <form class="addThemeForm" [formGroup]="themeForm" (ngSubmit)="onSubmit()">
+      <p class="formInputContainer">
+        <label class="formLabel" for="label">
+          Theme label
+          <input class="formInput" type="text" name="label" formControlName="label" placeholder="Add a label for the theme" id="label">
+        </label>
+      </p>
+      <p class="formInputContainer">
+        <label class="formLabel" for="backgroundColor">
+          First gradient background color
+          <input class="formInput" type="color" name="backgroundColor" formControlName="backgroundColor" id="backgroundColor">
+        </label>
+      </p>
+      <p class="formInputContainer">
+        <label class="formLabel" for="backgroundColorLeft">
+          Second gradient background color
+          <input class="formInput" type="color" name="backgroundColorLeft" formControlName="backgroundColorLeft" id="backgroundColorLeft">
+        </label>
+      </p>
+      <p class="formInputContainer">
+        <label class="formLabel" for="backgroundColorRight">
+          Third gradient background color
+          <input class="formInput" type="color" name="backgroundColorRight" formControlName="backgroundColorRight" id="backgroundColorRight">
+        </label>
+      </p>
+      <p class="formInputContainer">
+        <label class="formLabel" for="borderColor">
+          Border color
+          <input class="formInput"  type="color" name="borderColor" formControlName="borderColor" id="borderColor">
+        </label>
+      </p>
+      <p class="formInputContainer">
+        <label class="formLabel" for="fontColor">
+          Slogan color
+          <input class="formInput"  type="color" name="fontColor" formControlName="fontColor" id="fontColor">
+        </label>
+      </p>
+      <p class="formButtonContainer">
+      <button routerLink="/themes">Cancel</button>
+      <button type="submit">Add theme</button>
+      </p>
+    </form>
+  </div>
+</main>

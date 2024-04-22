@@ -1,4 +1,12 @@
-<div class="slogan" >
+<div
+  class="slogan"
+  [ngStyle]="{
+  'color': slogan?.theme?.fontColor,
+  'border': '0.3rem solid',
+  'border-color':  slogan?.theme?.borderColor,
+  'background': (slogan && slogan.theme) && this.getGradientBackground(slogan.theme)
+  }"
+>
   <h3>{{slogan?.slogan}}</h3>
-  <button type="button" (click)="slogan && delete(slogan)">x</button>
+  <button class="deleteSlogan" type="button" (click)="slogan && delete(slogan)">x</button>
 </div>

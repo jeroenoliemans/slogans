@@ -7,3 +7,38 @@
   box-sizing: inherit;
   position: relative;
 }
+
+.formInputContainer {
+  width: 300px;
+}
+
+.formLabel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.formInput {
+  border: 2px solid black;
+  padding: 0.3rem;
+  width: 150px;
+}
+
+.formSelect {
+  width: 165px;
+}
+
+.formButtonContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.formButtonContainer button {
+  border:  2px solid black;
+  padding: 0.5rem;
+  color: var(--gray-900);
+  text-decoration: none;
+  cursor: pointer;
+}

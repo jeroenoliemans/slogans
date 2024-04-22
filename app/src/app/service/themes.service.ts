@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import {ITheme} from '../types/types'
+import {ITheme, IThemeOption} from '../types/types'
 import { Store } from '../store/Store'
 
 @Injectable({
@@ -11,11 +11,18 @@ export class ThemeService {
 
   constructor(private http: HttpClient, private store: Store) {
     this.fetchThemes()
+    this.fetchThemeOptions()
   }
 
   fetchThemes() {
     this.http.get<ITheme[]>(`${this.baseUrl}/api/theme`).subscribe(data => {
       this.store.setThemes(data)
+    })
+  }
+
+  fetchThemeOptions() {
+    this.http.get<IThemeOption[]>(`${this.baseUrl}/api/theme/options`).subscribe(data => {
+      this.store.setThemeOptions(data)
     })
   }
 

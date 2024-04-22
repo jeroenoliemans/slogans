@@ -2,8 +2,30 @@
   <div class="content">
     <h1>Add your slogan</h1>
     <form [formGroup]="sloganForm" (ngSubmit)="onSubmit()">
-      <input type="text" name="slogan" formControlName="slogan" placeholder="Add a new slogan" id="slogan">
+      <p class="formInputContainer">
+        <label class="formLabel" for="slogan">
+          Slogan text
+          <input class="formInput" type="text" name="slogan" formControlName="slogan" placeholder="Add a new slogan" id="slogan">
+        </label>
+      </p>
+      <p class="formInputContainer">
+        <label class="formLabel" for="theme">
+          pick a theme
+          <select
+            class="formInput formSelect"
+            id="theme"
+            name="theme"
+            [(ngModel)]="selectedTheme"
+          >
+            <option value="" disabled>Default theme</option>
+            <option *ngFor="let theme of store.ThemeOptions()" [ngValue]="theme.id">{{ theme.label }}</option>
+          </select>
+        </label>
+      </p>
+      <p class="formButtonContainer">
+      <button>Cancel</button>
       <button type="submit">Add slogan</button>
+      </p>
     </form>
   </div>
 </main>

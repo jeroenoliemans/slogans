@@ -5,6 +5,8 @@ import {Store} from "../store/Store";
 import {NgForOf} from "@angular/common";
 import {SloganComponent} from "../slogan/slogan.component";
 import { Router } from '@angular/router'
+import {IThemeOption} from "../types/types";
+import {ThemeService} from "../service/themes.service";
 
 @Component({
   selector: 'app-add-slogan',
@@ -19,11 +21,16 @@ export class AddSloganComponent {
     slogan: ''
   })
 
+  selectedTheme: IThemeOption;
+
   constructor(
     public sloganService: SloganService,
+    public themeService: ThemeService,
     private formBuilder: FormBuilder,
-    private router:Router
+    private router:Router,
+    public store: Store
   ) {
+    this.selectedTheme = {id: 1, label: 'default'}
   }
 
   onSubmit() {

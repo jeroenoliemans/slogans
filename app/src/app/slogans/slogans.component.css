@@ -1,5 +1,4 @@
 .main {
-  width: 100vw;
   min-height: 100%;
   display: flex;
   justify-content: center;
@@ -15,5 +14,7 @@ h1 {
 .slogans {
   width: 90vw;
   display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
   justify-content: center;
 }

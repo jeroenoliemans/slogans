@@ -1,5 +1,5 @@
 import {effect, Injectable, WritableSignal, signal} from '@angular/core';
-import {ISlogan, ITheme} from "../types/types";
+import {ISlogan, ITheme, IThemeOption} from "../types/types";
 
 @Injectable({
   providedIn: 'root',
@@ -8,10 +8,11 @@ export class Store {
 
   private slogans: WritableSignal<ISlogan[] | any[]> = signal<ISlogan[] | []>([])
   private themes: WritableSignal<ITheme[] | any[]> = signal<ITheme[] | []>([])
+  private themeOptions: WritableSignal<IThemeOption[] | any[]> = signal<IThemeOption[] | []>([])
 
   constructor() {
     effect(() => {
-      console.log('store: ', this.slogans(), this.themes());
+      console.log('store: ', this.slogans(), this.themes(), this.themeOptions);
     });
   }
 
@@ -29,5 +30,13 @@ export class Store {
 
   get Themes() {
     return this.themes;
+  }
+
+  setThemeOptions(themes: IThemeOption[] | any[]) {
+    this.themeOptions.set(themes);
+  }
+
+  get ThemeOptions() {
+    return this.themeOptions;
   }
 }
