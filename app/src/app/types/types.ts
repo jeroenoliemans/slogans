@@ -1,6 +1,6 @@
 export interface ISlogan {
   id:number | null
-  slogan:string,
+  slogan:string
   themeId: number
   theme?: ITheme
 }

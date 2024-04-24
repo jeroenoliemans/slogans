@@ -22,6 +22,8 @@ export class SloganComponent {
   }
 
   public getGradientBackground(theme: ITheme) {
+    console.log('theme', theme)
+
     return theme ? `repeating-conic-gradient(at 100%,#0000 0.000045%, #000d 0.0005%),
     linear-gradient(${theme?.backgroundColor}, transparent),
     linear-gradient(to top left, ${theme?.backgroundColorLeft}, transparent),

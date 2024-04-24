@@ -36,7 +36,7 @@ export class ThemeService {
 
   deleteTheme(theme: ITheme): void {
     console.log(theme)
-    this.http.delete(`${this.baseUrl}/api/Theme/${theme.id}`).subscribe(data => {
+    this.http.delete(`${this.baseUrl}/api/theme/${theme.id}`).subscribe(data => {
       this.fetchThemes()
     });
   }

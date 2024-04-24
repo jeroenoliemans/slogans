@@ -14,7 +14,8 @@ html, body{
   text-transform: uppercase;
   height: fit-content;
   width: fit-content;
-  padding: 1.5rem 2rem;
+  padding: 1rem;
+  position: relative;
   /*background:*/
   /*  repeating-conic-gradient(at 100%,#0000 0.000045%, #000d 0.0005%), !* your noise *!*/
   /*  linear-gradient(lightgrey, transparent),*/
@@ -58,11 +59,24 @@ html, body{
   margin-top: 2rem;
 }
 
+button {
+  cursor: pointer;
+}
+
 .formButtonContainer button {
   border:  2px solid black;
   padding: 0.5rem;
   color: var(--gray-900);
   text-decoration: none;
   cursor: pointer;
+}
+
+.sloganControls {
+  position: absolute;
+  right: 5px;
+  top: -10px;
+}
+.sloganControls .deleteSlogan {
+  margin-left: 3px;
 }
 

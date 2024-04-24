@@ -10,15 +10,15 @@
       </p>
       <p class="formInputContainer">
         <label class="formLabel" for="theme">
-          pick a theme
+          pick a theme {{selectedTheme}}
           <select
+            (change)="onChange($event)"
             class="formInput formSelect"
             id="theme"
             name="theme"
-            [(ngModel)]="selectedTheme"
           >
-            <option value="" disabled>Default theme</option>
-            <option *ngFor="let theme of store.ThemeOptions()" [ngValue]="theme.id">{{ theme.label }}</option>
+            <option value="1" default>Default theme</option>
+            <option *ngFor="let theme of store.ThemeOptions()" value="{{theme.id}}">{{ theme.label }}</option>
           </select>
         </label>
       </p>

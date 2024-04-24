@@ -21,7 +21,7 @@ export class AddSloganComponent {
     slogan: ''
   })
 
-  selectedTheme: IThemeOption;
+  selectedTheme: number;
 
   constructor(
     public sloganService: SloganService,
@@ -30,14 +30,22 @@ export class AddSloganComponent {
     private router:Router,
     public store: Store
   ) {
-    this.selectedTheme = {id: 1, label: 'default'}
+    this.selectedTheme = 1
+  }
+
+  onChange(event: any) {
+    this.selectedTheme = event.target.value;
   }
 
   onSubmit() {
-    this.sloganService.addSlogan({id: null, slogan: this.sloganForm.value.slogan as string, themeId: 1})
+    console.log(this.selectedTheme)
+    console.log(this.sloganForm)
+
+    this.sloganService.addSlogan({
+      id: null,
+      slogan: this.sloganForm.value.slogan as string,
+      themeId: this.selectedTheme || 1})
     this.sloganForm.reset();
     this.router.navigate(['/slogans'])
-    // navigate to list
-    // this.sloganService.fetchSlogans()
   }
 }

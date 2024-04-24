@@ -7,5 +7,9 @@
   'background': theme && this.getGradientBackground(theme)
   }"
 >
+  <nav class="sloganControls">
+    <button title="Edit theme" class="editSlogan" type="button" (click)="theme && delete(theme)">e</button>
+    <button title="Delete theme" class="deleteSlogan" type="button" (click)="theme && delete(theme)">x</button>
+  </nav>
   <h3>{{theme?.label}}</h3>
 </div>

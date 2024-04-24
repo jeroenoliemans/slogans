@@ -42,17 +42,17 @@ public class ThemeController {
     }
 
     @PostMapping(value = PATH_THEMES)
-    Theme saveSlogan(@RequestBody Theme theme) {
+    Theme saveTheme(@RequestBody Theme theme) {
         return themeService.save(theme);
     }
 
     @PutMapping(value = PATH_THEME)
-    void updateSlogan(@RequestBody Theme theme) {
+    void updateTheme(@RequestBody Theme theme) {
         themeService.updateTheme(theme);
     }
 
     @DeleteMapping(value = PATH_THEME)
-    void deleteSlogan(@PathVariable Long id) {
+    void deleteTheme(@PathVariable Long id) {
         themeService.deleteTheme(id);
     }
 }

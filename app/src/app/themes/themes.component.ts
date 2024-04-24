@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {Store}  from '../store/Store'
 import {NgForOf} from "@angular/common";
 import {ThemeComponent} from "../theme/theme.component";
+import {ThemeService} from "../service/themes.service";
 
 @Component({
   selector: 'app-themes',
@@ -12,6 +13,7 @@ import {ThemeComponent} from "../theme/theme.component";
 })
 export class ThemesComponent {
   constructor(
+    public themeService: ThemeService,
     public store: Store
   ) {
   }

@@ -26,11 +26,4 @@ export class AppComponent {
     public store: Store
   ) {
   }
-
-
-  onSubmit() {
-    this.sloganService.addSlogan({id: null, slogan: this.sloganForm.value.slogan as string, themeId: 1})
-    this.sloganForm.reset();
-    this.sloganService.fetchSlogans()
-  }
 }
