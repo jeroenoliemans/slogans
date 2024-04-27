@@ -1,7 +1,7 @@
 import {Component, Input, } from '@angular/core';
 import {NgStyle} from '@angular/common'
-import {ITheme} from "../types/types";
-import {ThemeService} from "../service/themes.service";
+import {ITheme} from "../../../types/types";
+import {ThemeService} from "../../../service/themes.service";
 
 @Component({
   selector: 'theme',

@@ -32,6 +32,10 @@ export class Store {
     return this.themes;
   }
 
+  getThemeById(id: number) {
+    return this.themes().filter(theme => theme.id === id)[0]
+  }
+
   setThemeOptions(themes: IThemeOption[] | any[]) {
     this.themeOptions.set(themes);
   }

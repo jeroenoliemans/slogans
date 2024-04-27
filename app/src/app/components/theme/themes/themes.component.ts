@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import {Store}  from '../store/Store'
+import {Store}  from '../../../store/Store'
 import {NgForOf} from "@angular/common";
 import {ThemeComponent} from "../theme/theme.component";
-import {ThemeService} from "../service/themes.service";
+import {ThemeService} from "../../../service/themes.service";
 
 @Component({
   selector: 'app-themes',

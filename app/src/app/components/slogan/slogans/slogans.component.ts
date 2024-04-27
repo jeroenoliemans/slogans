@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {Store}  from '../store/Store'
+import {Store}  from '../../../store/Store'
 import {SloganComponent} from "../slogan/slogan.component";
 import {NgForOf} from "@angular/common";
 

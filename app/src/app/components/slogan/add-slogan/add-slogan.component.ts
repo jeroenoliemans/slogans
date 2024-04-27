@@ -1,0 +1,71 @@
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {SloganService} from "../../../service/slogan.service";
+import {Store} from "../../../store/Store";
+import {NgForOf, NgStyle} from "@angular/common";
+import {SloganComponent} from "../slogan/slogan.component";
+import { Router, ActivatedRoute } from '@angular/router'
+import {ITheme, IThemeOption} from "../../../types/types";
+import {ThemeService} from "../../../service/themes.service";
+
+@Component({
+  selector: 'app-add-slogan',
+  standalone: true,
+  imports: [FormsModule, ReactiveFormsModule, NgForOf, SloganComponent, NgStyle],
+  templateUrl: './add-slogan.component.html',
+  styleUrl: './add-slogan.component.css'
+})
+export class AddSloganComponent implements OnInit{
+  // the form to add slogans
+  sloganForm = this.formBuilder.group({
+    slogan: ''
+  })
+
+  selectedTheme: number;
+  previewTheme: ITheme;
+  editSloganId: number;
+
+
+  constructor(
+    public sloganService: SloganService,
+    public themeService: ThemeService,
+    private formBuilder: FormBuilder,
+    private router:Router,
+    private route: ActivatedRoute,
+    public store: Store
+  ) {
+    this.selectedTheme = 1;
+    this.previewTheme = store.getThemeById(this.selectedTheme);
+    this.editSloganId = 0;
+  }
+
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.editSloganId = params['id']; // Access the 'id' parameter from the URL
+      console.log('Test ID:', this.editSloganId);
+    });
+  }
+
+  onChange(event: any) {
+    this.selectedTheme = event.target.value * 1;
+    this.previewTheme = this.store.getThemeById(this.selectedTheme);
+
+    console.log(this.previewTheme)
+  }
+
+  public getGradientBackground(theme: ITheme) {
+    return theme ? `repeating-conic-gradient(at 100%,#0000 0.000045%, #000d 0.0005%),
+    linear-gradient(${theme?.backgroundColor}, transparent),
+    linear-gradient(to top left, ${theme?.backgroundColorLeft}, transparent),
+    linear-gradient(to top right, ${theme?.backgroundColorRight}, transparent)` : ''
+  }
+
+  onSubmit() {
+    this.sloganService.addSlogan({
+      id: null,
+      slogan: this.sloganForm.value.slogan as string,
+      themeId: this.selectedTheme || 1})
+    this.sloganForm.reset();
+    this.router.navigate(['/slogans'])
+  }
+}

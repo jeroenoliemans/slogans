@@ -5,7 +5,8 @@ import { SloganService } from './service/slogan.service'
 import {FormsModule, FormBuilder} from "@angular/forms";
 import { ReactiveFormsModule } from '@angular/forms';
 import {Store}  from './store/Store'
-import {SloganComponent} from './slogan/slogan.component'
+import {SloganComponent} from './components/slogan/slogan/slogan.component'
+import {ThemeService} from "./service/themes.service";
 
 @Component({
   selector: 'app-root',
@@ -22,6 +23,7 @@ export class AppComponent {
 
   constructor(
     public sloganService: SloganService,
+    public themeService:ThemeService,
     private formBuilder: FormBuilder,
     public store: Store
   ) {
