@@ -24,6 +24,10 @@ export class Store {
     return this.slogans;
   }
 
+  getSloganById(id: number) {
+    return this.slogans().filter(slogan => slogan.id === id)[0]
+  }
+
   setThemes(themes: ITheme[] | any[]) {
     this.themes.set(themes);
   }

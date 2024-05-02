@@ -23,7 +23,7 @@ export class AddSloganComponent implements OnInit{
 
   selectedTheme: number;
   previewTheme: ITheme;
-  editSloganId: number;
+  editSloganId: number | null;
 
 
   constructor(
@@ -36,13 +36,18 @@ export class AddSloganComponent implements OnInit{
   ) {
     this.selectedTheme = 1;
     this.previewTheme = store.getThemeById(this.selectedTheme);
-    this.editSloganId = 0;
+    this.editSloganId = null;
   }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.editSloganId = params['id']; // Access the 'id' parameter from the URL
-      console.log('Test ID:', this.editSloganId);
+      this.editSloganId = parseInt(params['id']); // Access the 'id' parameter from the URL
+
+      if(this.editSloganId) {
+        this.sloganForm.controls.slogan.setValue( this.store.getSloganById(this.editSloganId).slogan)
+        this.selectedTheme = this.store.getSloganById(this.editSloganId).themeId
+        this.previewTheme = this.store.getThemeById(this.selectedTheme);
+      }
     });
   }
 
@@ -62,7 +67,7 @@ export class AddSloganComponent implements OnInit{
 
   onSubmit() {
     this.sloganService.addSlogan({
-      id: null,
+      id: this.editSloganId,
       slogan: this.sloganForm.value.slogan as string,
       themeId: this.selectedTheme || 1})
     this.sloganForm.reset();

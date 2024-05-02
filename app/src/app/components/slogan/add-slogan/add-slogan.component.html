@@ -1,6 +1,6 @@
 <main class="main">
   <div class="content">
-    <h1>Add your slogan</h1>
+    <h1>{{editSloganId ? 'Edit' : 'Add'}} your slogan</h1>
     <form [formGroup]="sloganForm" (ngSubmit)="onSubmit()">
       <p class="formInputContainer">
         <label class="formLabel" for="slogan">
@@ -24,7 +24,7 @@
       </p>
       <p class="formButtonContainer">
       <button>Cancel</button>
-      <button type="submit">Add slogan</button>
+      <button type="submit">{{editSloganId ? 'Save' : 'Add slogan'}}</button>
       </p>
     </form>
   </div>
