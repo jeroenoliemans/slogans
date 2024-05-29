@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import {ISlogan} from '../types/types'
-import { Store } from '../store/Store'
+import {ISlogan} from '../../types/types'
+import { Store } from '../../store/Store'
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,6 @@ export class SloganService {
   private readonly baseUrl = 'http://localhost:8080'
 
   constructor(private http: HttpClient, private store: Store) {
-    this.fetchSlogans()
   }
 
   fetchSlogans() {

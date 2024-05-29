@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {Store}  from '../../../store/Store'
 import {SloganComponent} from "../slogan/slogan.component";
 import {NgForOf} from "@angular/common";
+import {SloganService} from "../../../service/slogan/slogan.service";
+import {ThemeService} from "../../../service/theme/theme.service";
 
 @Component({
   selector: 'app-slogans',
@@ -12,7 +14,14 @@ import {NgForOf} from "@angular/common";
 })
 export class SlogansComponent {
   constructor(
-    public store: Store
+    public store: Store,
+    private sloganService: SloganService,
+    private themeService: ThemeService
   ) {
+  }
+
+  ngOnInit(): void {
+    this.sloganService.fetchSlogans()
+    this.themeService.fetchThemes()
   }
 }

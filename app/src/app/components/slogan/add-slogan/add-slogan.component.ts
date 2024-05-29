@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {SloganService} from "../../../service/slogan.service";
+import {SloganService} from "../../../service/slogan/slogan.service";
 import {Store} from "../../../store/Store";
 import {NgForOf, NgStyle} from "@angular/common";
 import {SloganComponent} from "../slogan/slogan.component";
 import { Router, ActivatedRoute } from '@angular/router'
 import {ITheme, IThemeOption} from "../../../types/types";
-import {ThemeService} from "../../../service/themes.service";
+import {ThemeService} from "../../../service/theme/theme.service";
 
 @Component({
   selector: 'app-add-slogan',
@@ -40,6 +40,9 @@ export class AddSloganComponent implements OnInit{
   }
 
   ngOnInit() {
+    this.themeService.fetchThemes()
+    this.themeService.fetchThemeOptions()
+
     this.route.params.subscribe(params => {
       this.editSloganId = parseInt(params['id']); // Access the 'id' parameter from the URL
 
@@ -54,8 +57,6 @@ export class AddSloganComponent implements OnInit{
   onChange(event: any) {
     this.selectedTheme = event.target.value * 1;
     this.previewTheme = this.store.getThemeById(this.selectedTheme);
-
-    console.log(this.previewTheme)
   }
 
   public getGradientBackground(theme: ITheme) {

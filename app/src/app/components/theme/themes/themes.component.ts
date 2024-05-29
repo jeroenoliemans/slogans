@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {Store}  from '../../../store/Store'
 import {NgForOf} from "@angular/common";
 import {ThemeComponent} from "../theme/theme.component";
-import {ThemeService} from "../../../service/themes.service";
+import {ThemeService} from "../../../service/theme/theme.service";
 
 @Component({
   selector: 'app-themes',
@@ -16,5 +16,9 @@ export class ThemesComponent {
     public themeService: ThemeService,
     public store: Store
   ) {
+  }
+
+  ngOnInit() {
+    this.themeService.fetchThemes()
   }
 }

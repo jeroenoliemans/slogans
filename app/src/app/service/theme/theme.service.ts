@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import {ITheme, IThemeOption} from '../types/types'
-import { Store } from '../store/Store'
+import {ITheme, IThemeOption} from '../../types/types'
+import { Store } from '../../store/Store'
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +10,8 @@ export class ThemeService {
   private readonly baseUrl = 'http://localhost:8080'
 
   constructor(private http: HttpClient, private store: Store) {
-    this.fetchThemes()
-    this.fetchThemeOptions()
+    // this.fetchThemes()
+    // this.fetchThemeOptions()
   }
 
   fetchThemes() {

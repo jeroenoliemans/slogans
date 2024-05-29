@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import {ISlogan, ITheme} from '../../../types/types'
-import {SloganService} from '../../../service/slogan.service'
+import {SloganService} from '../../../service/slogan/slogan.service'
 import {NgStyle} from "@angular/common";
 import {Router} from "@angular/router";
 

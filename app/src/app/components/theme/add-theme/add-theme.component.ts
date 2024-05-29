@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgForOf} from "@angular/common";
-import {ThemeService} from "../../../service/themes.service";
+import {ThemeService} from "../../../service/theme/theme.service";
 
 @Component({
   selector: 'app-add-theme',
