@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import {ITheme, IThemeOption} from '../../types/types'
 import { Store } from '../../store/Store'
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,10 @@ export class ThemeService {
     this.http.get<ITheme[]>(`${this.baseUrl}/api/theme`).subscribe(data => {
       this.store.setThemes(data)
     })
+  }
+
+  fetchThemeById(id:number): Observable<ITheme>  {
+     return this.http.get<ITheme>(`${this.baseUrl}/api/theme/${id}`)
   }
 
   fetchThemeOptions() {

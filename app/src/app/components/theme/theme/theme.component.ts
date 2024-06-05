@@ -2,6 +2,7 @@ import {Component, Input, } from '@angular/core';
 import {NgStyle} from '@angular/common'
 import {ITheme} from "../../../types/types";
 import {ThemeService} from "../../../service/theme/theme.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'theme',
@@ -14,7 +15,8 @@ export class ThemeComponent {
   @Input() theme?:ITheme;
 
   constructor(
-    private themeService:ThemeService
+    private themeService:ThemeService,
+    private router:Router
   ) {
   }
 
@@ -27,5 +29,9 @@ export class ThemeComponent {
 
   delete(theme:ITheme) {
     this.themeService.deleteTheme(theme)
+  }
+
+  edit(theme:ITheme) {
+    this.router.navigate([`/edit-theme/${theme.id}`])
   }
 }

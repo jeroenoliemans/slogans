@@ -8,8 +8,8 @@
   }"
 >
   <nav class="sloganControls">
-    <button title="Edit theme" class="editSlogan" type="button" (click)="theme && delete(theme)">e</button>
-    <button title="Delete theme" class="deleteSlogan" type="button" (click)="theme && delete(theme)">x</button>
+    <button title="Edit theme" class="editTheme" type="button" (click)="theme && edit(theme)">e</button>
+    <button title="Delete theme" class="deleteTheme" type="button" (click)="theme && delete(theme)">x</button>
   </nav>
   <h3>{{theme?.label}}</h3>
 </div>

@@ -10,5 +10,6 @@ export const routes: Routes = [
   {path: 'themes', component: ThemesComponent},
   {path: 'add-slogan', component: AddSloganComponent},
   {path: 'edit-slogan/:id', component: AddSloganComponent},
-  {path: 'add-theme', component: AddThemeComponent}
+  {path: 'add-theme', component: AddThemeComponent},
+  {path: 'edit-theme/:id', component: AddThemeComponent}
 ];
