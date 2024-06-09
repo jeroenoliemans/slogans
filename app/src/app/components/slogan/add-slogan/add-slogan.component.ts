@@ -40,7 +40,8 @@ export class AddSloganComponent implements OnInit{
   }
 
   ngOnInit() {
-    this.themeService.fetchThemes()
+
+
     this.themeService.fetchThemeOptions()
 
     this.route.params.subscribe(params => {

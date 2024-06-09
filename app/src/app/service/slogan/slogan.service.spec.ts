@@ -44,6 +44,14 @@ describe('SloganService', () => {
     expect(mockStore.setSlogans).toHaveBeenCalledWith(mockSlogans);
   });
 
+  it('should fetch a slogan by ID',  () => {
+    const mockSlogan: ISlogan = { id: 1, slogan: 'Test Slogan', themeId: 1 };
+
+    service.fetchSloganById(1)
+
+    // expect observable
+  });
+
   it('should add a slogan and refresh slogans', () => {
     const newSlogan: ISlogan = { id: 2, slogan: 'New Slogan', themeId: 1 };
 

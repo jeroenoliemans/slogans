@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import {ISlogan} from '../../types/types'
+import {ISlogan, ITheme} from '../../types/types'
 import { Store } from '../../store/Store'
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,10 @@ export class SloganService {
     this.http.get<ISlogan[]>(`${this.baseUrl}/api/slogan`).subscribe(data => {
       this.store.setSlogans(data)
     })
+  }
+
+  fetchSloganById(id:number): Observable<ISlogan>  {
+     return this.http.get<ISlogan>(`${this.baseUrl}/api/slogan/${id}`)
   }
 
   addSlogan(slogan: ISlogan): void {

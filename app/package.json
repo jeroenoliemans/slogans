@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "test:single": "ng test --browsers ChromeHeadless --include src/app/components/slogan/slogan/slogan.component.spec.ts"
   },
   "private": true,
   "dependencies": {

@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet, RouterLink } from '@angular/router';
+import {RouterOutlet, RouterLink} from '@angular/router';
 import { SloganService } from './service/slogan/slogan.service'
 import {FormsModule} from "@angular/forms";
 import { ReactiveFormsModule } from '@angular/forms';
@@ -11,7 +11,14 @@ import {ThemeService} from "./service/theme/theme.service";
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, FormsModule, ReactiveFormsModule, SloganComponent, RouterLink],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    FormsModule,
+    ReactiveFormsModule,
+    SloganComponent,
+    RouterLink
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
