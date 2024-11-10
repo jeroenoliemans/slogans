@@ -21,7 +21,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import static com.slogans.controller.EndPoints.PATH_SLOGANS;
+import static com.slogans.controller.EndPoints.PATH_SLOGAN;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -38,7 +38,7 @@ public class SloganControllerIntegrationTest {
     })
     void testSlogansController() {
         mvc.perform(
-                        get(PATH_SLOGANS)
+                        get(PATH_SLOGAN)
                                 .contentType(MediaType.APPLICATION_JSON)
                 )
                 .andExpectAll(status().isOk(),
@@ -77,7 +77,7 @@ public class SloganControllerIntegrationTest {
         final var sloganAsJson = gson.toJson(slogan);
 
         mvc.perform(
-                        post(PATH_SLOGANS)
+                        post(PATH_SLOGAN)
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(sloganAsJson)
                 )

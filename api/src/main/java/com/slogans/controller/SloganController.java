@@ -16,8 +16,8 @@ import com.slogans.service.SloganService;
 import java.util.List;
 import java.util.Optional;
 
-import static com.slogans.controller.EndPoints.PATH_SLOGANS;
 import static com.slogans.controller.EndPoints.PATH_SLOGAN;
+import static com.slogans.controller.EndPoints.PATH_SLOGAN_ID;
 
 @RestController
 @RequiredArgsConstructor
@@ -25,27 +25,27 @@ import static com.slogans.controller.EndPoints.PATH_SLOGAN;
 public class SloganController {
     private final SloganService sloganService;
 
-    @GetMapping(value = PATH_SLOGANS)
+    @GetMapping(value = PATH_SLOGAN)
     List<SloganDTO> getAll() {
         return sloganService.getSlogans();
     }
 
-    @GetMapping(value = PATH_SLOGAN)
+    @GetMapping(value = PATH_SLOGAN_ID)
     Optional<SloganDTO> getSlogan(@PathVariable Long id) {
         return sloganService.getSlogan(id);
     }
 
-    @PostMapping(value = PATH_SLOGANS)
+    @PostMapping(value = PATH_SLOGAN)
     Slogan saveSlogan(@RequestBody Slogan slogan) {
         return sloganService.save(slogan);
     }
 
-    @PutMapping(value = PATH_SLOGAN)
+    @PutMapping(value = PATH_SLOGAN_ID)
     void updateSlogan(@PathVariable Long id, @RequestBody String updatedSloganText) {
         sloganService.updateSlogan(id, updatedSloganText);
     }
 
-    @DeleteMapping(value = PATH_SLOGAN)
+    @DeleteMapping(value = PATH_SLOGAN_ID)
     void deleteSlogan(@PathVariable Long id) {
         sloganService.deleteSlogan(id);
     }

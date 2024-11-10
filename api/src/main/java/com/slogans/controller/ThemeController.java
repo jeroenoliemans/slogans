@@ -1,6 +1,5 @@
 package com.slogans.controller;
 
-import com.slogans.domain.Slogan;
 import com.slogans.domain.Theme;
 import com.slogans.dto.ThemeDTO;
 import com.slogans.dto.ThemeOptionsDTO;
@@ -18,8 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.Optional;
 
+import static com.slogans.controller.EndPoints.API_THEME_ID;
 import static com.slogans.controller.EndPoints.PATH_THEME;
-import static com.slogans.controller.EndPoints.PATH_THEMES;
 import static com.slogans.controller.EndPoints.PATH_THEME_OPTIONS;
 
 @RestController
@@ -28,7 +27,7 @@ import static com.slogans.controller.EndPoints.PATH_THEME_OPTIONS;
 public class ThemeController {
     private final ThemeService themeService;
 
-    @GetMapping(value = PATH_THEMES)
+    @GetMapping(value = PATH_THEME)
     List<ThemeDTO> getAll() {
         return themeService.getThemes();
     }
@@ -36,22 +35,22 @@ public class ThemeController {
     @GetMapping(value = PATH_THEME_OPTIONS)
     List<ThemeOptionsDTO> getOptions() {return themeService.getThemeOptions();}
 
-    @GetMapping(value = PATH_THEME)
+    @GetMapping(value = API_THEME_ID)
     Optional<ThemeDTO> getTheme(@PathVariable Long id) {
         return themeService.getTheme(id);
     }
 
-    @PostMapping(value = PATH_THEMES)
+    @PostMapping(value = PATH_THEME)
     Theme saveTheme(@RequestBody Theme theme) {
         return themeService.save(theme);
     }
 
-    @PutMapping(value = PATH_THEME)
+    @PutMapping(value = API_THEME_ID)
     void updateTheme(@RequestBody Theme theme) {
         themeService.updateTheme(theme);
     }
 
-    @DeleteMapping(value = PATH_THEME)
+    @DeleteMapping(value = API_THEME_ID)
     void deleteTheme(@PathVariable Long id) {
         themeService.deleteTheme(id);
     }

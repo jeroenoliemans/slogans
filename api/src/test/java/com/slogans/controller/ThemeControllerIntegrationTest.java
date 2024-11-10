@@ -12,7 +12,7 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlGroup;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static com.slogans.controller.EndPoints.PATH_THEMES;
+import static com.slogans.controller.EndPoints.PATH_THEME;
 import static com.slogans.controller.EndPoints.PATH_THEME_OPTIONS;
 import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
@@ -37,7 +37,7 @@ public class ThemeControllerIntegrationTest {
     })
     void testGetThemesController() {
         mvc.perform(
-                        get(PATH_THEMES)
+                        get(PATH_THEME)
                                 .contentType(MediaType.APPLICATION_JSON)
                 )
                 .andExpectAll(status().isOk(),
@@ -101,7 +101,7 @@ public class ThemeControllerIntegrationTest {
         final var themeAsJson = gson.toJson(theme);
 
         mvc.perform(
-                        post(PATH_THEMES)
+                        post(PATH_THEME)
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(themeAsJson)
                 )
