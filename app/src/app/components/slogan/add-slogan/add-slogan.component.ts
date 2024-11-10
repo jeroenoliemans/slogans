@@ -40,9 +40,9 @@ export class AddSloganComponent implements OnInit{
   }
 
   ngOnInit() {
-
-
     this.themeService.fetchThemeOptions()
+
+    console.log(this.previewTheme)
 
     this.route.params.subscribe(params => {
       this.editSloganId = parseInt(params['id']); // Access the 'id' parameter from the URL

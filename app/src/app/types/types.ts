@@ -11,8 +11,8 @@ export interface ITheme {
   backgroundColor: string
   backgroundColorLeft: string
   backgroundColorRight: string
-  borderColor: string
-  fontColor: string
+  borderColor: string | null
+  fontColor: string | '#000000'
 }
 
 export interface IThemeOption {

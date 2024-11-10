@@ -35,9 +35,9 @@
   <div
     class="slogan"
     [ngStyle]="{
-    'color': previewTheme.fontColor,
+    'color': previewTheme && previewTheme.fontColor,
     'border': '0.3rem solid',
-    'border-color':  previewTheme.borderColor,
+    'border-color':  previewTheme && previewTheme.borderColor,
     'background': previewTheme && this.getGradientBackground(previewTheme)
   }"
   >

@@ -1,8 +1,9 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { SloganService } from './slogan.service';
 import { Store } from '../../store/Store';
 import { ISlogan } from '../../types/types';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('SloganService', () => {
   let service: SloganService;
@@ -13,12 +14,14 @@ describe('SloganService', () => {
     const storeSpy = jasmine.createSpyObj('Store', ['setSlogans']);
 
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [
+    imports: [],
+    providers: [
         SloganService,
-        { provide: Store, useValue: storeSpy }
-      ]
-    });
+        { provide: Store, useValue: storeSpy },
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting()
+    ]
+});
 
     service = TestBed.inject(SloganService);
     httpMock = TestBed.inject(HttpTestingController);
