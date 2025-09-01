@@ -9,6 +9,8 @@ import {Observable} from "rxjs";
 })
 export class SloganService {
   private readonly baseUrl = 'http://localhost:8080'
+  private postQueue: ISlogan[] = [];
+  private posting = false;
 
   constructor(private http: HttpClient, private store: Store) {
   }
@@ -24,10 +26,26 @@ export class SloganService {
   }
 
   addSlogan(slogan: ISlogan): void {
-    const headers = { 'Content-Type': 'application/json' };
+    this.postQueue.push(slogan);
+    this.processQueue();
+  }
 
-    this.http.post(`${this.baseUrl}/api/slogan`, slogan, { headers }).subscribe(data => {
-      this.fetchSlogans()
+  private processQueue(): void {
+    if (this.posting || this.postQueue.length === 0) return;
+    this.posting = true;
+    const slogan = this.postQueue[0];
+    const headers = { 'Content-Type': 'application/json' };
+    this.http.post(`${this.baseUrl}/api/slogan`, slogan, { headers }).subscribe({
+      next: () => {
+        this.postQueue.shift();
+        this.fetchSlogans();
+        this.posting = false;
+        this.processQueue();
+      },
+      error: () => {
+        this.posting = false;
+        setTimeout(() => this.processQueue(), 2000); // Retry after 2s
+      }
     });
   }
 
