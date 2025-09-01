@@ -5,6 +5,7 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 import { Store } from '../../../store/Store';
 import { SloganService } from '../../../service/slogan/slogan.service';
 import { ThemeService } from '../../../service/theme/theme.service';
+import { runInInjectionContext } from '@angular/core';
 
 describe('SlogansComponent', () => {
   let component: SlogansComponent;
@@ -16,18 +17,22 @@ describe('SlogansComponent', () => {
   beforeEach(async () => {
     sloganService = jasmine.createSpyObj('SloganService', ['fetchSlogans']);
     themeService = jasmine.createSpyObj('ThemeService', ['fetchThemes']);
-    store = new Store();
 
     await TestBed.configureTestingModule({
       imports: [SlogansComponent],
       providers: [
+        Store,
         provideHttpClient(withInterceptorsFromDi()),
         provideHttpClientTesting(),
         { provide: SloganService, useValue: sloganService },
-        { provide: ThemeService, useValue: themeService },
-        { provide: Store, useValue: store }
+        { provide: ThemeService, useValue: themeService }
       ]
     }).compileComponents();
+
+    // Initialize store in injection context
+    runInInjectionContext(TestBed, () => {
+      store = TestBed.inject(Store);
+    });
 
     fixture = TestBed.createComponent(SlogansComponent);
     component = fixture.componentInstance;
